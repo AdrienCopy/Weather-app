@@ -1,0 +1,33 @@
+header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+#city {
+    width: 40%;
+    text-align: center;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    outline: none;
+    height: 25px;
+}
+
+#city:hover {
+    outline: solid #003C57;
+}
+
+#btn {
+    width: 40%;
+    height: 25px;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+#btn:hover {
+    border: solid #003C57;
+}
+

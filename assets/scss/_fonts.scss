@@ -1,0 +1,24 @@
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 800
+body {
+  font-family: "Ubuntu Sans", sans-serif;
+  color: rgb(255, 255, 255);
+}
+h1 {
+  font-family: "Ubuntu Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+  "wdth" 100;
+  font-size: 80px;
+}
+
+section {
+  color: #007198;
+}
+
+button {
+  color: #007198;
+  font-family: "Ubuntu Sans", sans-serif;
+}

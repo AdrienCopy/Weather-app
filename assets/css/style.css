@@ -74,6 +74,11 @@ main section {
   border-radius: 5px;
   border: none;
 }
+@media screen and (max-width: 768px) {
+  main section {
+    width: 98%;
+  }
+}
 main section div {
   border: solid 1px;
   border-radius: 5px;

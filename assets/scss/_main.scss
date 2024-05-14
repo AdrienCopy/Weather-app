@@ -11,6 +11,9 @@ main {
         padding: 2% 0 2% 0;
         border-radius: 5px;
         border: none;
+        @include mobile {
+            width: 98%;
+        }
         
         div {
             border: solid 1px;

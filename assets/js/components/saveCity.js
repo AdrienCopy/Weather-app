@@ -1,7 +1,7 @@
 export function saveCity (value) {
-    /*if (value.trim() === "") {
+    if (value.trim() === "") {
         return;
-    }*/
+    }
     let tab = [];
     const existingTab = localStorage.getItem('tab');// Vérifier s'il existe pour ne pas l'effacer...
     if (existingTab) {

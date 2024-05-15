@@ -26,7 +26,7 @@ btn.addEventListener('click', function() {
             console.error("Error fetching weather data:", error);
             // Gérer les erreurs, par exemple afficher un message d'erreur à l'utilisateur
         });
-
+    input.value = "";
 })
 
 

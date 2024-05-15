@@ -5,32 +5,11 @@ const randomId = function (length = 6) {
     return Math.random().toString(36).substring(2, length + 2);
 };
 
-function deleteCity(index) {
-    // suprime du DOM
-    let element = document.getElementById(index);
-    main.removeChild(element);
-
-    //supprimer du LocalStorage
-    let h2 = element.querySelector('h2');
-    let cityName = h2.textContent.trim();
-    let local = localStorage.getItem('tab');
-    let cities = JSON.parse(local);
-    let cityIndex = cities.findIndex(city => city === cityName);
-    if (cityIndex !== -1) {
-        cities.splice(cityIndex, 1);
-        localStorage.setItem('tab', JSON.stringify(cities));
-    } else {
-        console.log(Error);
-        console.log(cityName);
-    }
-
-}
-
 export function displayWeather(meteo) {
     let section = document.createElement('section');
     let index = randomId();
     section.setAttribute('id', index);
-    main.appendChild(section);
+    main.prepend(section);
 
     let removeBtn = document.createElement('button');
     removeBtn.setAttribute('id', 'removeBtn');
@@ -66,6 +45,12 @@ export function displayWeather(meteo) {
     humidity.textContent = `Humidité : ${humid} %`;
     section.appendChild(humidity);
 
+    let wind = document.createElement('p');
+    let speed = meteo.list[0].wind.speed;
+    let speedKm = speed * 3.6;
+    wind.textContent = `Vitesse du vent : ${speedKm.toFixed(1)} Km/h`
+    section.appendChild(wind);
+    console.log(speed);
 
     forecast(meteo, section);
 }
@@ -86,15 +71,40 @@ function forecast(meteo, section) {
         let convertion = temp - 273.15;
 
         let divElement = document.createElement('div');
-        let p = document.createElement('p');
-        p.textContent = `${date} ${convertion.toFixed(1)} °C`
+        divElement.setAttribute('id', 'hour');
+        let pDate = document.createElement('p');
+        let pDegre = document.createElement('p');
+        pDate.textContent = date;
+        pDegre.textContent = `${convertion.toFixed(1)} °C`;
 
         divElement.appendChild(imgIcon);
-        divElement.appendChild(p);
+        divElement.appendChild(pDate);
+        divElement.appendChild(pDegre);
         forecast.appendChild(divElement);
 
         //console.log(`Temperature ${index} : ${convertion.toFixed(1)} et ${date}`);
 
     });
+
+}
+
+export function deleteCity(index) {
+    // supprime du DOM
+    let element = document.getElementById(index);
+    main.removeChild(element);
+
+    //supprimer du LocalStorage
+    let h2 = element.querySelector('h2');
+    let cityName = h2.textContent.trim();
+    let local = localStorage.getItem('tab');
+    let cities = JSON.parse(local);
+    let cityIndex = cities.findIndex(city => city === cityName);
+    if (cityIndex !== -1) {
+        cities.splice(cityIndex, 1);
+        localStorage.setItem('tab', JSON.stringify(cities));
+    } else {
+        console.log(Error);
+        console.log(cityName);
+    }
 
 }

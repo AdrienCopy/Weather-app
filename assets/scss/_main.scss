@@ -1,17 +1,19 @@
 main {
     display: flex;
-    //justify-content: center;
     width: 100%;
     overflow: auto;
+    @include computer {
+        justify-content: space-between;
+    }
     section {
         width: 95%;
         text-align: center;
-        background-color: rgb(240, 248, 255);
+        background-color: rgb(240, 248, 255, 0.9);
         margin: 2%;
         padding: 2% 0 2% 0;
         border-radius: 5px;
         border: none;
-        @include mobile {
+        @include computer {
             width: 40%;
         }
         
@@ -19,10 +21,11 @@ main {
             border: solid 1px;
             border-radius: 5px;
             margin: 1px;
+            width: 100%;
             p {
+            
                 margin: 2px;
-                height: 50px;
-                width: 150px;
+                
                 
             }
         }
@@ -31,16 +34,33 @@ main {
 }
 
 #removeBtn {
+    width: 20px;
+    height: 20px;
     margin-top: 0%;
-    margin-left: 95%;
+    margin-left: 90%;
     border: none;
+    border-radius: 50%;
+    padding: 1px;
+    background: none;
+}
+
+#removeBtn:hover {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+
 }
 
 #forecast {
+    width: 100%;
     margin: 0;
     border: none;
     display: flex;
     flex-direction: row;
-    overflow: auto;
+    overflow: auto;   
+}
+#hour {
+    
+    width: 200px;
+    height: 200px;
     
 }

@@ -26,6 +26,10 @@ button {
   font-family: "Ubuntu Sans", sans-serif;
 }
 
+#city {
+  font-size: 17pt;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -34,7 +38,7 @@ header {
 }
 
 #city {
-  width: 40%;
+  width: 70%;
   text-align: center;
   border: none;
   border-radius: 5px 5px 0 0;
@@ -47,7 +51,7 @@ header {
 }
 
 #btn {
-  width: 40%;
+  width: 70%;
   height: 25px;
   border: none;
   border-radius: 0 0 5px 5px;
@@ -61,12 +65,11 @@ header {
 
 main {
   display: flex;
-  justify-content: center;
   width: 100%;
   overflow: auto;
 }
 main section {
-  width: 40%;
+  width: 95%;
   text-align: center;
   background-color: rgb(240, 248, 255);
   margin: 2%;
@@ -74,9 +77,9 @@ main section {
   border-radius: 5px;
   border: none;
 }
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   main section {
-    width: 98%;
+    width: 40%;
   }
 }
 main section div {
@@ -88,6 +91,12 @@ main section div p {
   margin: 2px;
   height: 50px;
   width: 150px;
+}
+
+#removeBtn {
+  margin-top: 0%;
+  margin-left: 95%;
+  border: none;
 }
 
 #forecast {

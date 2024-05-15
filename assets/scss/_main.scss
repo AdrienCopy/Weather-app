@@ -1,10 +1,10 @@
 main {
     display: flex;
-    justify-content: center;
+    //justify-content: center;
     width: 100%;
     overflow: auto;
     section {
-        width: 40%;
+        width: 95%;
         text-align: center;
         background-color: rgb(240, 248, 255);
         margin: 2%;
@@ -12,7 +12,7 @@ main {
         border-radius: 5px;
         border: none;
         @include mobile {
-            width: 98%;
+            width: 40%;
         }
         
         div {
@@ -28,6 +28,12 @@ main {
         }
         
     }
+}
+
+#removeBtn {
+    margin-top: 0%;
+    margin-left: 95%;
+    border: none;
 }
 
 #forecast {

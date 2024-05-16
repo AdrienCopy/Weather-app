@@ -1,4 +1,8 @@
 import { formatDate } from "./formatDate.js";
+//import { Chart } from '../../../node_modules/chart.js/auto';
+//import { Chart } from './path/to/chart.js/auto';
+//import { Chart } from 'chart.js/auto';
+
 let main = document.querySelector('main');
 
 const randomId = function (length = 6) {
@@ -53,6 +57,7 @@ export function displayWeather(meteo) {
     console.log(speed);
 
     forecast(meteo, section);
+    chartA(meteo, section);
 }
 
 function forecast(meteo, section) {
@@ -87,6 +92,50 @@ function forecast(meteo, section) {
     });
 
 }
+
+function chartA(meteo, section) {
+    let chartTab = document.createElement('canvas');
+    chartTab.setAttribute('id', 'myChart');
+    section.appendChild(chartTab);
+    let tableauMeteo = [];
+
+    meteo.list.forEach((item) => {
+        let temp = item.main.feels_like;
+        let date = formatDate(item.dt_txt);
+        let conversion = (temp - 273.15).toFixed(1);
+    
+        let nouvelleEntree = {
+            date: date,
+            conversion: parseFloat(conversion)
+        };
+    
+        tableauMeteo.push(nouvelleEntree);
+    });
+    
+    const ctx = chartTab.getContext('2d');
+    new Chart(ctx, {
+        type: 'line', // graphique
+        data: {
+            labels: tableauMeteo.map((entry) => entry.date), // Tableau des dates
+            datasets: [{
+                label: 'Température (°C)', 
+                data: tableauMeteo.map((entry) => entry.conversion), // Tableau des valeurs de température
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', 
+                borderColor: 'rgba(75, 192, 192, 1)', 
+                borderWidth: 1 
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true // Axe y commence à zéro
+                }
+            }
+        }
+    });
+
+}
+
 
 export function deleteCity(index) {
     // supprime du DOM

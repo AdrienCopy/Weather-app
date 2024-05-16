@@ -2,6 +2,7 @@ import { getWeather } from "./components/api.js";
 import { displayWeather } from "./components/weather.js";
 import { displayCitiesFromLocalStorage } from "./components/loadedCities.js";
 import { saveCity } from "./components/saveCity.js";
+//import Chart from 'chart.js/auto';
 
 document.addEventListener("DOMContentLoaded", function() {
     displayCitiesFromLocalStorage();
@@ -11,7 +12,6 @@ let btn = document.getElementById('btn');
 btn.addEventListener('click', function() {
     let input = document.getElementById('city');
     let inputValue = input.value;
-    
     
     getWeather(inputValue)
         .then((result) => {
@@ -23,10 +23,22 @@ btn.addEventListener('click', function() {
             //forecast(result);
         })
         .catch((error) => {
+            //echec();
             console.error("Error fetching weather data:", error);
-            // Gérer les erreurs, par exemple afficher un message d'erreur à l'utilisateur
+            
         });
     input.value = "";
 })
 
 
+function echec() {
+    let main = document.querySelector('main');
+    let div = document.createElement('div');
+    div.setAttribute('id', 'cityEchec');
+    
+    let p = document.createElement('p');
+    p.textContent = "Are you sure ?"
+
+    div.appendChild('p');
+    main.appendChild(div);
+}

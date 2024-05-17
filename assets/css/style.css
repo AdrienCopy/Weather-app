@@ -101,6 +101,7 @@ main {
   display: flex;
   width: 100%;
   overflow: auto;
+  scroll-snap-type: x proximity;
 }
 @media screen and (min-width: 768px) {
   main {
@@ -121,6 +122,10 @@ main section {
   main section {
     width: 40%;
   }
+}
+
+.scroll {
+  scroll-snap-align: center;
 }
 
 #removeBtn {

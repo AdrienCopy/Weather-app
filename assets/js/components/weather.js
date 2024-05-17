@@ -15,6 +15,7 @@ export function displayWeather(meteo) {
     let section = document.createElement('section');
     let index = randomId();
     section.setAttribute('id', index);
+    section.classList.add('scroll');
     main.prepend(section);
 
     let removeBtn = document.createElement('button');

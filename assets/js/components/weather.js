@@ -1,4 +1,6 @@
 import { formatDate } from "./formatDate.js";
+import { picture } from "./api.js";
+import { randomCity } from "./random.js";
 //import { Chart } from '../../../node_modules/chart.js/auto';
 //import { Chart } from './path/to/chart.js/auto';
 //import { Chart } from 'chart.js/auto';
@@ -58,6 +60,9 @@ export function displayWeather(meteo) {
 
     forecast(meteo, section);
     chartA(meteo, section);
+    Picture(meteo.city.name, section);
+
+    
 }
 
 function forecast(meteo, section) {
@@ -103,26 +108,26 @@ function chartA(meteo, section) {
         let temp = item.main.feels_like;
         let date = formatDate(item.dt_txt);
         let conversion = (temp - 273.15).toFixed(1);
-    
+
         let nouvelleEntree = {
             date: date,
             conversion: parseFloat(conversion)
         };
-    
+
         tableauMeteo.push(nouvelleEntree);
     });
-    
+
     const ctx = chartTab.getContext('2d');
     new Chart(ctx, {
         type: 'line', // graphique
         data: {
             labels: tableauMeteo.map((entry) => entry.date), // Tableau des dates
             datasets: [{
-                label: 'Température (°C)', 
+                label: 'Température (°C)',
                 data: tableauMeteo.map((entry) => entry.conversion), // Tableau des valeurs de température
-                backgroundColor: 'rgba(75, 192, 192, 0.2)', 
-                borderColor: 'rgba(75, 192, 192, 1)', 
-                borderWidth: 1 
+                backgroundColor: '#4bc0c033',
+                borderColor: '#0594D0',
+                borderWidth: 1
             }]
         },
         options: {
@@ -134,6 +139,32 @@ function chartA(meteo, section) {
         }
     });
 
+}
+
+function Picture(city, section) {
+    picture(city)
+        .then((result) => {
+            if (result.results && result.results.length > 0) {
+                let cityPictures = [];
+                result.results.forEach((item) => {
+                    let image = item.urls.regular;
+                    cityPictures.push(image);
+                });
+                cityPictures = randomCity(cityPictures);
+                console.log('ok', cityPictures);
+                let img = document.createElement('img');
+                img.src = cityPictures;
+                img.setAttribute('id', 'imgPicture');
+                section.appendChild(img);
+
+            } else {
+                console.log('No pictures found for the specified city.');
+            }
+        })
+        .catch((error) => {
+            echec();
+            console.error("Error fetching picture data:", error);
+        });
 }
 
 
@@ -155,5 +186,4 @@ export function deleteCity(index) {
         console.log(Error);
         console.log(cityName);
     }
-
 }

@@ -21,3 +21,25 @@ export function getWeather(city) {
             // Gérer les erreurs, par exemple afficher un message d'erreur à l'utilisateur
         });
 }
+
+const pictueKey = 'KTTn2BPeDrkFCS6mttygV8f_vlUeGx6B6bmmziCM6SM';
+//const city = 'bruxelles';
+
+export function picture(city) {
+    const apiUrl = `https://api.unsplash.com/search/photos?&query=${city}&client_id=${pictueKey}`; 
+
+    return fetch(apiUrl)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            return data;
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error('Error fetching weather data:', error);
+        });
+}

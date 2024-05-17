@@ -44,6 +44,16 @@ button {
   }
 }
 
+#myChart {
+  color: #007198;
+}
+
+#cityEchec {
+  color: #007198;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -127,7 +137,7 @@ main section {
 
 #removeBtn:hover {
   background-color: rgb(255, 0, 0);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0px 15px rgba(0, 0, 0, 0.3);
   color: rgb(255, 255, 255);
 }
 
@@ -154,13 +164,43 @@ main section {
 }
 
 #myChart {
-  width: 200px;
-  height: 200px;
   background: rgba(255, 255, 255, 0.4);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.52);
   border-radius: 5px;
   margin: 3px;
+}
+
+#cityEchec {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 5px;
+  height: 45%;
+  width: 100%;
+  text-align: center;
+  align-content: center;
+  justify-self: center;
+  margin: auto;
+}
+#cityEchec button {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 5px;
+  width: 40%;
+  height: 30px;
+}
+
+#imgPicture {
+  width: 98%;
+  height: auto;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: 5px;
+  margin: 1px;
 }
 
 body {

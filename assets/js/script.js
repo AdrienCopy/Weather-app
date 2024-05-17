@@ -23,7 +23,7 @@ btn.addEventListener('click', function() {
             //forecast(result);
         })
         .catch((error) => {
-            //echec();
+            echec();
             console.error("Error fetching weather data:", error);
             
         });
@@ -32,13 +32,25 @@ btn.addEventListener('click', function() {
 
 
 function echec() {
+    console.log('?');
     let main = document.querySelector('main');
     let div = document.createElement('div');
     div.setAttribute('id', 'cityEchec');
     
     let p = document.createElement('p');
-    p.textContent = "Are you sure ?"
+    p.textContent = "Not found, sorry !"
 
-    div.appendChild('p');
+    let button = document.createElement('button');
+    button.textContent = 'ok';
+    button.addEventListener('click', function() {
+        main.removeChild(div);
+    })
+
+    div.appendChild(p);
+    div.appendChild(button);
     main.appendChild(div);
 }
+
+
+
+

@@ -1,4 +1,4 @@
-# projet App Météo
+# Projet App Météo
 **formation Becode**
 
 ### The Weather Application
@@ -23,3 +23,8 @@ création d'une app météo qui permet de consulter les conditions climatiques d
 
 - OpenWeatherMap API
 - Unsplash API
+
+## Design
+
+![text](assets/picture/Capture1.png)
+![text](assets/picture/Capture2.png)
